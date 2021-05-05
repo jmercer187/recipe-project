@@ -2,8 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-    res.send('<h1>Welcome to foodbook</h1>');
-});
+const browseController = require('../controllers/browse');
+
+router.get('/', browseController.getBrowse);
 
 module.exports = router;

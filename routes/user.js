@@ -2,13 +2,10 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/add-recipe', (req, res, next) => {
-    res.send('<form action="/user/add-recipe" method="POST"><input type="text" name="title"><button type="submit">Add Recipe</button></form>');
-});
+const userController = require('../controllers/user')
 
-router.post('/add-recipe', (req, res, next) => {
-    console.log(req.body);
-    res.redirect('/');
-})
+router.get('/add-recipe', userController.getAddRecipe);
+
+router.post('/add-recipe', userController.postAddRecipe);
 
 module.exports = router;

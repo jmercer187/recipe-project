@@ -2,20 +2,22 @@ const path = require('path');
 
 const express = require('express');
 
-const app = express();
+const user = require('./routes/user');
+const browse = require('./routes/browse');
+const errorController = require('./controllers/errors');
 
-const userRoutes = require('./routes/user');
-const browseRoutes = require('./routes/browse');
+const { appendFileSync } = require('fs');
+
+const app = express();
+console.log("it has begun");
+
+app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, './public')));
 
-app.use('/user', userRoutes);
-app.use(browseRoutes);
-
-app.use((req, res, next) => {
-    res.status(404)
-        .send('<h2>Page Not Found</h2>');
-})
+app.use(browse);
+app.use(user);
+app.use(errorController.get404);
 
 app.listen(3000);
