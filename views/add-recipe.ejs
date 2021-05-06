@@ -2,4 +2,34 @@
 
     <h2>Add a recipe</h2>
 
+    <div class="add-recipe-form-container">
+        <form form id="form" class="form" action="/add-recipe" method="POST" enctype="multipart/form-data">
+
+            <h3>Complete Fields</h3>
+
+            <div class="add-recipe-form-control">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name">
+            </div>
+
+            <div class="add-recipe-form-control">
+                <label for="ingredients">Ingredients</label>
+                <input type="text" name="ingredient" id="ingredient">
+                <button type="button" class="add-ingredient-btn" id="add-ingredient-btn">Add Ingredient</button>
+                <div class="ingredients-container" id="ingredients-container"></div>
+            </div>
+
+            <div class="add-recipe-form-control">
+                <div class=></div>
+                <label for="step1">Step 1</label>
+                <textarea name="step1"></textarea>
+                <button type="button" class="add-step-btn" id="add-step-btn">Add Step</button>
+            </div>
+
+            <button>Submit</button>
+        </form>
+    </div>
+
+
+
     <%- include("includes/end.ejs") %>
